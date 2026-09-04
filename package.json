@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix frontend_app run dev",
+    "build": "npm --prefix frontend_app run build",
+    "preview": "npm --prefix frontend_app run preview",
+    "lint": "npm --prefix frontend_app run lint"
+  }
+}
