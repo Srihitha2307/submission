@@ -41,7 +41,7 @@ export const governmentService = {
         {
           step: 4,
           title: 'Select confirmed breed',
-          description: `Choose "${breedName}" from the National Breed Master drop-down (verified by PashuDrishti AI at ${confidencePercent}% match).`,
+          description: `Choose "${breedName}" from the National Breed Master drop-down (verified by PashuSarthi AI at ${confidencePercent}% match).`,
           completed: false
         },
         {
@@ -58,7 +58,7 @@ export const governmentService = {
     return `--- BHARAT PASHUDHAN REGISTRATION PAYLOAD ---
 Tag Number: ${record.tagNumber}
 Species: ${record.species}
-Confirmed Breed: ${record.confirmedBreed} (PashuDrishti Confidence: ${record.confidencePercent}%)
+Confirmed Breed: ${record.confirmedBreed} (PashuSarthi Confidence: ${record.confidencePercent}%)
 Sex: ${record.sex}
 Age Category: ${record.ageCategory}
 Owner: ${record.ownerName}
@@ -101,7 +101,7 @@ Animal Type: ${record.species}
 Owner Name: ${record.ownerName}
 Village/District: ${record.villageDistrict}, ${record.state}
 Field Date: ${record.date}
-Verification: Morphological evaluation completed via PashuDrishti.
+Verification: Morphological evaluation completed via PashuSarthi.
 Notice: Official registration must be logged by an authorized animal husbandry worker.
 ==============================================`;
   },

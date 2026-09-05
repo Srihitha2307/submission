@@ -15,6 +15,7 @@ import { useApp } from '../context/AppContext';
 import { useLanguage } from '../context/LanguageContext';
 import { detectionService } from '../services/detectionService';
 import { VoiceButton } from '../components/common/VoiceButton';
+import { useToast } from '../components/common/Toast';
 
 // Field-tested SVG silhouettes & real preview vectors for Indian cattle
 const STEP_TEMPLATES = [
@@ -50,6 +51,7 @@ const STEP_TEMPLATES = [
 export const IdentifyScreen: React.FC = () => {
   const { navigate, activeScenario, addIdentification } = useApp();
   const { t } = useLanguage();
+  const { showToast } = useToast();
 
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [photos, setPhotos] = useState<{ [key: number]: string | null }>({
@@ -174,8 +176,17 @@ export const IdentifyScreen: React.FC = () => {
 
       setIsAnalyzing(false);
       navigate({ name: 'DetectionResult', resultId: result.id });
-    } catch {
+    } catch (error) {
       setIsAnalyzing(false);
+      const message = error instanceof Error ? error.message : 'Detection failed.';
+      const isConnectionError = message.includes('Failed to fetch') || message.includes('NetworkError');
+      showToast({
+        type: 'warning',
+        duration: 6000,
+        message: isConnectionError
+          ? 'The detection server is offline. Start the FastAPI backend on port 8000 and try again.'
+          : message,
+      });
     }
   };
 

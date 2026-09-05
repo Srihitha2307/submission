@@ -183,7 +183,7 @@ export const ProfileScreen: React.FC = () => {
 
         {/* App Version Stamp */}
         <div className="text-center text-gray-400 text-[11px] pb-4">
-          <p className="font-semibold text-gray-600">PashuDrishti v1.0.4</p>
+          <p className="font-semibold text-gray-600">PashuSarthi v1.0.4</p>
           <p>Livestock Breed Intelligence & Field Assistant</p>
         </div>
       </div>
