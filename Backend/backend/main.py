@@ -1,8 +1,11 @@
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from backend.routes_users_animals import router as users_animals_router
 from backend.routes_predictions import router as predictions_router
 from backend.routes_community import router as community_router
+from backend.model_service import router as model_router
 
 app = FastAPI(
     title="flipflop8 Backend API",
@@ -12,9 +15,18 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
+allowed_origins = [
+    origin.strip()
+    for origin in os.getenv(
+        "CORS_ORIGINS",
+        "http://localhost:3000,http://127.0.0.1:3000"
+    ).split(",")
+    if origin.strip()
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -23,6 +35,7 @@ app.add_middleware(
 app.include_router(users_animals_router, tags=["Users & Animals"])
 app.include_router(predictions_router, tags=["Predictions & Feedback"])
 app.include_router(community_router, tags=["Community & Moderation"])
+app.include_router(model_router, tags=["Inference"])
 
 @app.get("/", tags=["System"])
 async def root():

@@ -1,12 +1,15 @@
 import { DetectionResult } from '../types';
 
+const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000').replace(/\/$/, '');
+
 export const detectionService = {
   /**
    * Real production breed detection pipeline connecting to FastAPI backend.
    */
-  async detectBreed(
-    photos: { face?: string; side?: string; hornHump?: string }
-  ): Promise<DetectionResult> {
+   async detectBreed(
+     photos: { face?: string; side?: string; hornHump?: string },
+     _scenario?: string
+   ): Promise<DetectionResult> {
     // Pick the primary photo available (prioritize side profile, then face, then horn/hump)
     const photoDataUri = photos.side || photos.face || photos.hornHump;
     
@@ -22,14 +25,19 @@ export const detectionService = {
     const formData = new FormData();
     formData.append("file", file);
 
-    // Call your FastAPI backend endpoint (adjust URL if hosted remotely)
-    const apiResponse = await fetch("http://localhost:8000/predict", {
+    const apiResponse = await fetch(`${API_BASE_URL}/predict`, {
       method: "POST",
       body: formData,
     });
 
     if (!apiResponse.ok) {
-      throw new Error("Failed to communicate with the breed detection model API.");
+      let detail = `Detection API returned HTTP ${apiResponse.status}.`;
+      try {
+        const error = await apiResponse.json();
+        if (typeof error.detail === 'string') detail = error.detail;
+      } catch {
+      }
+      throw new Error(detail);
     }
 
     const data = await apiResponse.json();
