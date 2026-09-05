@@ -28,7 +28,7 @@ export const AppNavigator: React.FC = () => {
     switch (currentRoute.name) {
       case 'Home':
         return {
-          title: 'PashuDrishti',
+          title: 'PashuSarthi',
           subtitle: 'Livestock Breed Intelligence',
           showBack: false,
         };
@@ -100,7 +100,7 @@ export const AppNavigator: React.FC = () => {
         };
       default:
         return {
-          title: 'PashuDrishti',
+          title: 'PashuSarthi',
           subtitle: '',
           showBack: false,
         };

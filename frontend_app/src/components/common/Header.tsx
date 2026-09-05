@@ -51,7 +51,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           <div className="min-w-0">
             <h1 className="text-base font-bold tracking-tight text-white leading-tight truncate">
-              {title || 'PashuDrishti'}
+              {title || 'PashuSarthi'}
             </h1>
             {subtitle ? (
               <p className="text-[12px] text-white/70 leading-snug truncate">

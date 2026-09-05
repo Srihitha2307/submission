@@ -1,4 +1,4 @@
-# AGENTS.md — PashuDrishti (flipflop8)
+# AGENTS.md — PashuSarthi (flipflop8)
 
 Cattle/buffalo breed identification app: React+Vite+Tailwind frontend (AI Studio) + FastAPI backend (Firebase/Firestore) + Keras ResNet50 model.
 

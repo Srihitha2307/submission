@@ -2,7 +2,7 @@
 
 ## Product
 
-**PashuDrishti** is a cattle and buffalo breed identification and livestock information application. It combines a browser-based user interface, a Python API, Firebase services, and a computer-vision model.
+**PashuSarthi** is a cattle and buffalo breed identification and livestock information application. It combines a browser-based user interface, a Python API, Firebase services, and a computer-vision model.
 
 ## Frontend
 

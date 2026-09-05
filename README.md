@@ -1,6 +1,6 @@
-# PashuDrishti
+# PashuSarthi
 
-PashuDrishti is a React/Vite frontend for cattle and buffalo breed information, connected to a FastAPI backend and a Keras ResNet50 inference model.
+PashuSarthi is a React/Vite frontend for cattle and buffalo breed information, connected to a FastAPI backend and a Keras ResNet50 inference model.
 
 ## Architecture
 
